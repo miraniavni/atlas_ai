@@ -29,3 +29,31 @@ def test_search_finds_relevant_chunk():
         assert "30 days" in relevant[0]["text"]
         assert relevant[0]["score"] > offtopic[0]["score"]
         session.rollback()
+
+from search import retrieve
+
+QUESTIONS_WITHOUT_ANSWERS = [
+    "What is the capital of France?",
+    "What is the CEO's salary?",
+    "What is the dental insurance plan?",
+    "Which cloud region hosts production?",
+]
+
+
+def test_retrieve_answers_when_evidence_exists():
+    with Session(engine) as session:
+        ingest_text(session, "policy.md", POLICY, size=200, overlap=30)
+        result = retrieve(session, "How many days do I have to submit receipts?")
+        assert result["answerable"] is True
+        session.rollback()
+
+
+def test_retrieve_abstains_without_evidence():
+    with Session(engine) as session:
+        ingest_text(session, "policy.md", POLICY, size=200, overlap=30)
+        for question in QUESTIONS_WITHOUT_ANSWERS:
+            result = retrieve(session, question)
+            print(round(result["hits"][0]["score"], 3), question)
+        result = retrieve(session, QUESTIONS_WITHOUT_ANSWERS[0])
+        assert result["answerable"] is False
+        session.rollback()        
