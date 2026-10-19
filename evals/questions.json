@@ -1,0 +1,18 @@
+[
+  {"question": "What's the limit for dinner on a work trip?", "answerable": true, "gold_phrase": "40 dollars"},
+  {"question": "Do I need approval to buy something expensive?", "answerable": true, "gold_phrase": "500 dollars"},
+  {"question": "How soon must I report a stolen work laptop?", "answerable": true, "gold_phrase": "24 hours"},
+  {"question": "How many days a week can I work from home?", "answerable": true, "gold_phrase": "two days per week"},
+  {"question": "What hours do I need to be available?", "answerable": true, "gold_phrase": "11 am"},
+  {"question": "How much money do I get for work equipment?", "answerable": true, "gold_phrase": "400 dollars"},
+  {"question": "How long after buying something do I have to hand in the receipt?", "answerable": true, "gold_phrase": "30 days"},
+  {"question": "Does my work laptop need to be encrypted?", "answerable": true, "gold_phrase": "disk encryption"},
+  {"question": "How many vacation days do I get?", "answerable": false, "gold_phrase": null},
+  {"question": "What is the process for requesting a salary raise?", "answerable": false, "gold_phrase": null},
+  {"question": "Which airline should I book for business travel?", "answerable": false, "gold_phrase": null},
+  {"question": "How many sick days am I allowed?", "answerable": false, "gold_phrase": null},
+  {"question": "What is the password policy?", "answerable": false, "gold_phrase": null},
+  {"question": "How do I submit an expense claim in the system?", "answerable": false, "gold_phrase": null},
+  {"question": "Is parental leave paid?", "answerable": false, "gold_phrase": null},
+  {"question": "Can I expense a hotel upgrade?", "answerable": false, "gold_phrase": null}
+]
