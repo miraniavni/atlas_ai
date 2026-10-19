@@ -6,6 +6,9 @@ from db import engine
 from ingest import ingest_text
 from search import retrieve
 
+from answer import answer_question
+from llm import LLMUnavailable
+
 MAX_UPLOAD_BYTES = 5 * 1024 * 1024
 
 app = FastAPI(title="Atlas AI")
@@ -53,3 +56,10 @@ def upload_document(file: UploadFile, session: Session = Depends(get_session)):
 @app.post("/ask")
 def ask(body: AskRequest, session: Session = Depends(get_session)):
     return retrieve(session, body.question)
+
+@app.post("/ask")
+def ask(body: AskRequest, session: Session = Depends(get_session)):
+    try:
+        return answer_question(session, body.question)
+    except LLMUnavailable:
+        raise HTTPException(503, "The language model is unavailable right now. Try again shortly.")
